@@ -1,9 +1,38 @@
 const inquirer = require('inquirer');
 const axios = require('axios');
-const fs = require("fs");
+const fs = require("fs").promises
+const questions = require("./questions")
 
 
 
+
+
+async function fileMaker(){
+    const answer =  await inquirer.prompt(questions.quest)
+    const {data} = await axios.get(`https://api.github.com/users/${answer.githubUserName}`)
+        console.log(data.email)
+        console.log(data.avatar_url)
+        answer.email = data.email
+        answer.pic = data.avatar_url
+
+    fs.writeFile('README.txt', questions.readme(answer))
+    .catch(console.log)
+    
+
+       
+
+
+
+    
+}
+
+fileMaker()
+
+
+
+
+
+/*
 inquirer.prompt([
     {
         type: 'input',
@@ -12,7 +41,7 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        message: 'What is Github user name??',
+        : 'What is Github user name??',
         name: 'GithubUserName'
     }]
 ).then(function(res){
@@ -71,6 +100,6 @@ inquirer.prompt([
         })
     })
 })
-
+*/
 
 
