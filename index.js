@@ -15,7 +15,7 @@ async function fileMaker(){
         answer.email = data.email
         answer.pic = data.avatar_url
 
-    fs.writeFile('README.txt', questions.readme(answer))
+    fs.writeFile('README.md', questions.readme(answer))
     .catch(console.log)
     
 

@@ -44,18 +44,16 @@ exports.quest = [
 
 
 exports.readme =  function(answers) {
-    return `
-    
-    # ${answers.projectName}
-
-    ## details:
-    * name ${answers.name}
-    * Picture link: ${answers.picture}
-    Email : ${answers.email}
-    Github user name: ${answers.githubUserName}
-    Project: ${answers.projectName}
-    Project Description: ${answers.projectDescription}
-    Instructions: ${answers.instructions}
-    Usage: ${answers.usage}
-    Contributing${answers.contributing}`
+    return (`
+# ${answers.projectName}
+## details:
+* name ${answers.name}
+* Picture link: ${answers.picture}
+Email : ${answers.email}
+Github user name: ${answers.githubUserName}
+Project: ${answers.projectName}
+Project Description: ${answers.projectDescription}
+Instructions: ${answers.instructions}
+Usage: ${answers.usage}
+Contributing: ${answers.contributing}`)
 }
