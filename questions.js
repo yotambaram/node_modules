@@ -12,7 +12,7 @@ exports.quest = [
     },
     {
         type: 'input',
-        message: 'Insert your project title',
+        message: 'Insert your project name?',
         name: 'projectName'
     },
     {
@@ -36,24 +36,27 @@ exports.quest = [
         name: 'contributing'
     },
     {
-        type: 'input',
-        message: 'What is badge?',
-        name: 'NA'
+        type: 'list',
+        choices: ['blue', 'red', 'yellow', 'green'],
+        message: 'What is favorite color?',
+        name: 'color'
     }  
 ]
+
 
 
 exports.readme =  function(answers) {
     return (`
 # ${answers.projectName}
-## details:
 * name ${answers.name}
-* Picture link: ${answers.picture}
-Email : ${answers.email}
-Github user name: ${answers.githubUserName}
-Project: ${answers.projectName}
-Project Description: ${answers.projectDescription}
-Instructions: ${answers.instructions}
-Usage: ${answers.usage}
-Contributing: ${answers.contributing}`)
+*Email : ${answers.email}
+*Github user name: ${answers.githubUserName}
+*Project name: ${answers.projectName}
+*Project Description: ${answers.projectDescription}
+*Instructions: ${answers.instructions}
+*Usage: ${answers.usage}
+*Contributing: ${answers.contributing}
+*![badge](https://img.shields.io/static/v1?label=Version&message=1.0&color=${answers.color})
+Picture link: ![badge](${answers.pic})
+`)
 }

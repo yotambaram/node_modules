@@ -4,10 +4,7 @@ const fs = require("fs").promises
 const questions = require("./questions")
 
 
-
-
-
-async function fileMaker(){
+async function gitHubData(){
     const answer =  await inquirer.prompt(questions.quest)
     const {data} = await axios.get(`https://api.github.com/users/${answer.githubUserName}`)
         console.log(data.email)
@@ -15,7 +12,7 @@ async function fileMaker(){
         answer.email = data.email
         answer.pic = data.avatar_url
 
-    fs.writeFile('README.md', questions.readme(answer))
+    fs.writeFile(answer.projectName + '.md', questions.readme(answer))
     .catch(console.log)
     
 
@@ -26,7 +23,7 @@ async function fileMaker(){
     
 }
 
-fileMaker()
+gitHubData()
 
 
 
